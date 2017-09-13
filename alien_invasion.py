@@ -21,7 +21,7 @@ def run_game():
     aliens = Group()
 
     # 创建外星人群
-    gf.create_fleet(ai_settings, screen, aliens)
+    gf.create_fleet(ai_settings, screen, ship, aliens)
 
     # 设置背景色
     bg_color = (230, 230, 230)
@@ -34,9 +34,9 @@ def run_game():
         #监视键盘和鼠标事件
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
-        bullets.update()
         # 删除已消失的子弹
-        gf.update_bullets(bullets)
+        gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
+        gf.update_aliens(ai_settings, aliens)
         gf.update_screen(ai_settings, screen, ship, aliens, bullets)
 
 run_game()
